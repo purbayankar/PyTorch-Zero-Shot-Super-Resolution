@@ -28,6 +28,7 @@ class SRNet(nn.Module):
 		x = self.relu(self.Conv2(x))
 		x = self.relu(self.Conv3(x))
 		x = self.relu(self.Conv4(x))
+		x = x + LR_img
 		x = self.relu(self.Conv5(x))
 		x = self.relu(self.Conv6(x))
 		x = self.relu(self.Conv7(x))
