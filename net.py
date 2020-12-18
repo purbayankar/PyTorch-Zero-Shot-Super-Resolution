@@ -8,9 +8,10 @@ class SRNet(nn.Module):
 		super(SRNet, self).__init__()
 
 		self.relu = nn.ReLU(inplace=True)
+		self.pad = nn.ReflectionPad2d(1)
 
 		self.Conv1 = nn.Conv2d(3,64,3,1,1,bias=True)
-		self.Conv2 = nn.Conv2d(64,64,3,1,1,bias=True)
+		self.Conv2 = nn.Conv2d(128,64,3,1,1,bias=True)
 		self.Conv3 = nn.Conv2d(64,64,3,1,1,bias=True)
 		self.Conv4 = nn.Conv2d(64,64,3,1,1,bias=True)
 		self.Conv5 = nn.Conv2d(64,64,3,1,1,bias=True)
@@ -21,6 +22,8 @@ class SRNet(nn.Module):
 	def forward(self, LR_img):
 
 		x = self.relu(self.Conv1(LR_img))
+		x_ = self.relu(self.Conv1_(self.pad(LR_img)))
+      		x = torch.cat((x,x_), dim=1)
 		x = self.relu(self.Conv2(x))
 		x = self.relu(self.Conv3(x))
 		x = self.relu(self.Conv4(x))
