@@ -17,9 +17,9 @@ class SRNet(nn.Module):
 		self.Conv3 = nn.Conv2d(128,64,3,1,1,bias=True)
 		self.Conv4 = nn.Conv2d(64,3,3,1,1,bias=True)
 		self.Conv5 = nn.Conv2d(3,64,3,1,1,bias=True)
-		self.Conv5_ = nn.Conv2d(3,64,3,1,1,bias=True)
+		self.Conv5_ = nn.Conv2d(3,64,5,1,1,bias=True)
 		self.Conv6 = nn.Conv2d(128,64,3,1,1,bias=True)
-		self.Conv6_ = nn.Conv2d(128,64,3,1,1,bias=True)
+		self.Conv6_ = nn.Conv2d(128,64,5,1,1,bias=True)
 		self.Conv7 = nn.Conv2d(128,64,3,1,1,bias=True)
 		self.Conv8 = nn.Conv2d(64,3,3,1,1,bias=True)
 
