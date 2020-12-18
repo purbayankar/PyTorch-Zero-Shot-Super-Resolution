@@ -37,8 +37,7 @@ def enhance(img_path, scale):
 	image = img.imread(img_path)
 	hr_fathers_sources = [image]
 
-# 	scale_factors = np.array([[1.0, 1.5], [1.5, 1.0], [1.5, 1.5], [1.5, 2.0], [2.0, 1.5], [2.0, 2.0]])
-	scale_factors = np.array([1.0, 1.0])
+	scale_factors = np.array([[1.0, 1.5], [1.5, 1.0], [1.5, 1.5], [1.5, 2.0], [2.0, 1.5], [2.0, 2.0]])
 	back_projection_iters = np.array([6, 6, 8, 10, 10, 12])
 	learning_rate_change_iter_nums = [0]
 
