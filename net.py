@@ -26,7 +26,7 @@ class SRNet(nn.Module):
 		self.Conv6_ = nn.Conv2d(128,64,5,1,1,bias=True)
 		self.Conv7 = nn.Conv2d(128,64,3,1,1,bias=True)
 # 		self.Conv8 = nn.Conv2d(64,3,3,1,1,bias=True)
-		self.Conv8 = AugmentedConv(in_channels=64, out_channels=3, kernel_size=3, dk=40, dv=4, Nh=4, relative=True, stride=1, shape=32).to(device)
+		self.Conv8 = AugmentedConv(in_channels=64, out_channels=3, kernel_size=3, dk=40, dv=4, Nh=4, relative=False, stride=1).to(device)
 
 	def forward(self, LR_img):
 		
