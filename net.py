@@ -35,11 +35,11 @@ class SRNet(nn.Module):
 		x = self.relu(self.Conv4(x))
 		x = x + LR_img
 		x = self.relu(self.Conv5(x))
-		x_ = self.relu(self.Conv5_(self.pad(x)))
-		x = torch.cat((x,x_), dim=1)
+# 		x_ = self.relu(self.Conv5_(self.pad(x)))
+# 		x = torch.cat((x,x_), dim=1)
 		x = self.relu(self.Conv6(x))
-		x_ = self.relu(self.Conv6_(self.pad(x)))
-		x = torch.cat((x,x_), dim=1)
+# 		x_ = self.relu(self.Conv6_(self.pad(x)))
+# 		x = torch.cat((x,x_), dim=1)
 		x = self.relu(self.Conv7(x))
 		x = self.Conv8(x)
 
