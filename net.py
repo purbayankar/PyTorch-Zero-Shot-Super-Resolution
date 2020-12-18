@@ -24,7 +24,7 @@ class SRNet(nn.Module):
 		self.Conv8 = nn.Conv2d(64,3,3,1,1,bias=True)
 
 	def forward(self, LR_img):
-		print(LR_img.shape)
+		
 		x = self.relu(self.Conv1(LR_img))
 		x_ = self.relu(self.Conv1_(self.pad(LR_img)))
 		x = torch.cat((x,x_), dim=1)
