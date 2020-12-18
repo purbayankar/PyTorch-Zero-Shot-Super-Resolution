@@ -4,7 +4,7 @@ import math
 from attention_augmented_conv import AugmentedConv
 
 use_cuda = torch.cuda.is_available()
-device = torch.deivce('cuda' if use_cuda else 'cpu')
+device = torch.device('cuda' if use_cuda else 'cpu')
 
 class SRNet(nn.Module):
 
