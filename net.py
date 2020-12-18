@@ -11,6 +11,7 @@ class SRNet(nn.Module):
 		self.pad = nn.ReflectionPad2d(1)
 
 		self.Conv1 = nn.Conv2d(3,64,3,1,1,bias=True)
+		self.Conv1_ = nn.Conv2d(3,64,5,1,1,bias=True)
 		self.Conv2 = nn.Conv2d(128,64,3,1,1,bias=True)
 		self.Conv3 = nn.Conv2d(64,64,3,1,1,bias=True)
 		self.Conv4 = nn.Conv2d(64,64,3,1,1,bias=True)
