@@ -1,6 +1,10 @@
 import torch
 import torch.nn as nn
 import math
+from attention_augmented_conv import AugmentedConv
+
+use_cuda = torch.cuda.is_available()
+device = torch.deivce('cuda' if use_cuda else 'cpu')
 
 class SRNet(nn.Module):
 
@@ -21,7 +25,8 @@ class SRNet(nn.Module):
 		self.Conv6 = nn.Conv2d(128,64,3,1,1,bias=True)
 		self.Conv6_ = nn.Conv2d(128,64,5,1,1,bias=True)
 		self.Conv7 = nn.Conv2d(128,64,3,1,1,bias=True)
-		self.Conv8 = nn.Conv2d(64,3,3,1,1,bias=True)
+# 		self.Conv8 = nn.Conv2d(64,3,3,1,1,bias=True)
+		self.Conv8 = AugmentedConv(in_channels=64, out_channels=3, kernel_size=3, dk=40, dv=4, Nh=4, relative=True, stride=1, shape=32).to(device)
 
 	def forward(self, LR_img):
 		
