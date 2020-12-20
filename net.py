@@ -51,8 +51,9 @@ class SRNet(nn.Module):
 		x6 = self.relu(self.Conv7(x6))
 		x6 = self.Conv8(x6)
 		x6 = self.eca(x6)
-
-		SR_img = LR_img + x2     # Because we have to learn residuals.
+		
+		x6 = x6 + x2
+		SR_img = LR_img + x6     # Because we have to learn residuals.
 
 		return SR_img
 
