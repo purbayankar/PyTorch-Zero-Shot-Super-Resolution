@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import math
+from eca_module import eca_layer
 # from attention_augmented_conv import AugmentedConv
 
 # use_cuda = torch.cuda.is_available()
@@ -26,6 +27,7 @@ class SRNet(nn.Module):
 		self.Conv6_ = nn.Conv2d(128,64,5,1,1,bias=True)
 		self.Conv7 = nn.Conv2d(128,64,3,1,1,bias=True)
 		self.Conv8 = nn.Conv2d(64,3,3,1,1,bias=True)
+		self.eca = eca_layer(3,3)
 # 		self.Conv8 = AugmentedConv(in_channels=64, out_channels=3, kernel_size=3, dk=20, dv=2, Nh=2, relative=False, stride=1).to(device)
 
 	def forward(self, LR_img):
@@ -38,6 +40,7 @@ class SRNet(nn.Module):
 		x2 = torch.cat((x1,x1_), dim=1)
 		x2 = self.relu(self.Conv3(x2))
 		x2 = self.relu(self.Conv4(x2))
+		x2 = self.eca(x2)
 		x2 = x2 + LR_img
 		x3 = self.relu(self.Conv5(x2))
 		x3_ = self.relu(self.Conv5_(self.pad(x2)))
@@ -47,6 +50,7 @@ class SRNet(nn.Module):
 		x6 = torch.cat((x5,x5_), dim=1)
 		x6 = self.relu(self.Conv7(x6))
 		x6 = self.Conv8(x6)
+		x6 = self.eca(x6)
 
 		SR_img = LR_img + x6     # Because we have to learn residuals.
 
