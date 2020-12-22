@@ -178,5 +178,5 @@ if __name__ == '__main__':
 	## First argument is the image that you want to upsample with ZSSR. 
         ## Second argument is the scale with which you want to resize. Currently only scale = 2 supported. For other scales, change the variable 'scale_factors' accordingly.
 
-	enhance('images/kim.png', 2)
+	enhance('images/img.png', 2)
 
