@@ -53,6 +53,7 @@ class SRNet(nn.Module):
 		x6 = self.eca(x6)
 		
 		x6 = x6 + x2
+		print(x6.shape)
 		SR_img = LR_img + x6     # Because we have to learn residuals.
 
 		return SR_img
