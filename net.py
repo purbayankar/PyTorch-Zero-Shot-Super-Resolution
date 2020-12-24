@@ -54,9 +54,9 @@ class SRNet(nn.Module):
 		
 		x6 = x6 + x2
 		
-		SR_img = LR_img + x6     # Because we have to learn residuals.
+# 		SR_img = LR_img + x6     # Because we have to learn residuals.
 
-		return SR_img
+		return x6
 
 # class SRNet(nn.Module):
 
