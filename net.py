@@ -26,7 +26,7 @@ class SRNet(nn.Module):
 		self.Conv6 = nn.Conv2d(128,64,3,1,1,bias=True)
 		self.Conv6_ = nn.Conv2d(128,64,5,1,1,bias=True)
 		self.Conv7 = nn.Conv2d(128,64,3,1,1,bias=True)
-		self.Conv8 = nn.Conv2d(64,3,1,1,1,bias=True)
+		self.Conv8 = nn.Conv2d(64,3,3,1,1,bias=True)
 		self.eca = eca_layer(3,3)
 
 
